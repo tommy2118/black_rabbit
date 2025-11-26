@@ -362,58 +362,6 @@ function highlightSwappedCells(row1: number, col1: number, row2: number, col2: n
   }, SWAP_DURATION);
 }
 
-function animateSwap(row1: number, col1: number, row2: number, col2: number, onComplete: () => void) {
-  const gridEl = document.getElementById('puzzle-grid');
-  if (!gridEl) {
-    onComplete();
-    return;
-  }
-
-  const cell1 = gridEl.querySelector(`[data-row="${row1}"][data-col="${col1}"]`) as HTMLElement;
-  const cell2 = gridEl.querySelector(`[data-row="${row2}"][data-col="${col2}"]`) as HTMLElement;
-
-  if (!cell1 && !cell2) {
-    onComplete();
-    return;
-  }
-
-  // Remove selection styling during swap
-  cell1?.classList.remove('selected');
-  cell2?.classList.remove('selected');
-
-  // Determine swap direction and animate
-  const isHorizontal = row1 === row2;
-  let class1 = '';
-  let class2 = '';
-
-  if (isHorizontal) {
-    if (col1 < col2) {
-      class1 = 'swapping-right';
-      class2 = 'swapping-left';
-    } else {
-      class1 = 'swapping-left';
-      class2 = 'swapping-right';
-    }
-  } else {
-    if (row1 < row2) {
-      class1 = 'swapping-down';
-      class2 = 'swapping-up';
-    } else {
-      class1 = 'swapping-up';
-      class2 = 'swapping-down';
-    }
-  }
-
-  cell1?.classList.add(class1);
-  cell2?.classList.add(class2);
-
-  setTimeout(() => {
-    cell1?.classList.remove(class1);
-    cell2?.classList.remove(class2);
-    onComplete();
-  }, SWAP_DURATION);
-}
-
 function animateInvalidSwap(row1: number, col1: number, row2: number, col2: number) {
   const gridEl = document.getElementById('puzzle-grid');
   if (!gridEl) return;
@@ -565,7 +513,6 @@ function closePuzzle(tokensEarned: number) {
   }
   puzzleOverlayElement?.remove();
   puzzleOverlayElement = null;
-  console.log('[PUZZLE] Closing puzzle, tokens earned:', tokensEarned, 'callback exists:', !!puzzleCallback);
   if (puzzleCallback) {
     puzzleCallback(tokensEarned);
   }
