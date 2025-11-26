@@ -1,0 +1,56 @@
+:root {
+  /* Color palette */
+  --noir-black: #0a0a0f;
+  --noir-dark: #1a1a2e;
+  --noir-darker: #12121a;
+  --blood-red: #8b0000;
+  --blood-red-light: #a52a2a;
+  --gold-accent: #d4af37;
+  --gold-muted: #b8960c;
+  --smoke-gray: #3d3d3d;
+  --smoke-light: #5a5a5a;
+  --paper-white: #f5f5dc;
+  --paper-dim: #d4d4c4;
+
+  /* Typography */
+  --font-headline: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-evidence: 'Courier Prime', 'Courier New', monospace;
+  --font-handwritten: 'Caveat', cursive;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.3);
+
+  /* Borders */
+  --border-subtle: 1px solid var(--smoke-gray);
+  --border-accent: 2px solid var(--gold-accent);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* Z-index layers */
+  --z-base: 0;
+  --z-cards: 10;
+  --z-modal: 100;
+  --z-overlay: 1000;
+}
+
+/* Dark mode is default, but support light mode preference */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Keep dark for noir atmosphere */
+  }
+}
